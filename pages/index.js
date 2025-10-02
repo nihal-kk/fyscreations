@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -12,6 +12,16 @@ import Footer from "@/components/footer";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // fake loading effect for 2 sec
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -31,51 +41,58 @@ export default function Home() {
         <link rel="icon" href="/logo.jpg" />
       </Head>
 
-      <div
-        className={
-          isDarkMode
-            ? "bg-gray-900 text-white min-h-screen"
-            : "bg-white text-black min-h-screen"
-        }
-      >
-        {/* Header */}
-        <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      {/* Loader */}
+     {loading ? (
+  <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+    {/* Logo / Icon */}
+    <img 
+      src="/photos/pic_1.png" 
+      alt="Venmenaden Logo" 
+      className="w-20 h-20 animate-pulse"
+    />
+    <span className="mt-4 text-xl font-semibold">Loading...</span>
+  </div>
+) : (
+        <div
+          className={
+            isDarkMode
+              ? "bg-gray-900 text-white min-h-screen"
+              : "bg-white text-black min-h-screen"
+          }
+        >
+          {/* Header */}
+          <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
-        {/* Hero Section */}
-        <section id="hero">
-          <Hero isDarkMode={isDarkMode} />
-        </section>
+          {/* Hero Section */}
+          <section id="hero">
+            <Hero isDarkMode={isDarkMode} />
+          </section>
 
-        {/* About Section */}
-        <section id="about">
-          <About isDarkMode={isDarkMode} />
-        </section>
+          {/* About Section */}
+          <section id="about">
+            <About isDarkMode={isDarkMode} />
+          </section>
 
-        {/* Services Section */}
-        <section id="services">
-          <Service isDarkMode={isDarkMode} />
-        </section>
+          {/* Services Section */}
+          <section id="services">
+            <Service isDarkMode={isDarkMode} />
+          </section>
 
-        {/* Works / Sliders Section */}
-        <section id="works" className="space-y-6">
-          <SliderR isDarkMode={isDarkMode} />
-          <SliderL isDarkMode={isDarkMode} />
-          <SliderrR isDarkMode={isDarkMode} />
-        </section>
+          {/* Works / Sliders Section */}
+          <section id="works" className="space-y-6">
+            <SliderR isDarkMode={isDarkMode} />
+            <SliderL isDarkMode={isDarkMode} />
+            <SliderrR isDarkMode={isDarkMode} />
+          </section>
 
-        {/* Testimonials Section
-        <section id="testimonials" className="py-20 text-center">
-          <h2 className="text-3xl font-bold mb-4">Testimonials</h2>
-          <p className="text-gray-400">Coming soon...</p>
-        </section> */}
+          {/* Contact Section */}
+          <section id="contact" className="py-20 text-center">
+            <Contact isDarkMode={isDarkMode} />
+          </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="py-20 text-center">
-         <Contact isDarkMode={isDarkMode} />
-        </section>
-
-        <Footer isDarkMode={isDarkMode}/>
-      </div>
+          <Footer isDarkMode={isDarkMode} />
+        </div>
+      )}
     </>
   );
 }
