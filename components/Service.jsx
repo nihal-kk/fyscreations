@@ -1,81 +1,133 @@
-"use client"; // Required for React hooks if needed
+"use client";
 
 import Image from "next/image";
 
-// Example services with icons (replace with your own images or SVGs)
 const services = [
   {
     title: "Logo Design",
     description:
-      "Creating unique and memorable logos that represent your brand identity.",
-    icon: "/icons/logo.png",
+      "Creating modern, professional, and memorable logos that elevate your brand identity.",
+    icon: "/icons/logood.png",
   },
   {
     title: "Poster Design",
     description:
-      "Designing visually striking posters for events, promotions, and campaigns.",
+      "High-impact posters for events, promotions, ads, and digital campaigns.",
     icon: "/icons/poster.png",
   },
   {
-    title: "Typography",
+    title: "ID Card Design",
     description:
-      "Crafting beautiful text layouts that enhance readability and aesthetics.",
-    icon: "/icons/typography.png",
+      "Professional and clean ID card designs tailored for businesses, schools, and organizations.",
+    icon: "/icons/id.png",
   },
   {
-    title: "Calligraphy",
+    title: "Invitation Card Design",
     description:
-      "Custom hand-lettered designs for invitations, logos, and artworks.",
-    icon: "/icons/caligraphy.svg",
+      "Elegant and modern invitation card designs for weddings, events, birthdays, and celebrations.",
+    icon: "/icons/Invitation.png",
   },
   {
     title: "Digital Design",
     description:
-      "Designing graphics for websites, social media, apps, and digital campaigns.",
+      "Creative content for websites, apps, social media, ads, and brand promotions.",
     icon: "/icons/digital.png",
   },
+  {
+    title: "Video Editing",
+    description:
+      "Professional video editing for ads, reels, promos, intros, and brand storytelling.",
+    icon: "/icons/video.png",
+  },
 ];
+
 
 export default function Service({ isDarkMode }) {
   return (
     <section
       id="services"
-      className={`py-20 ${isDarkMode ? "bg-gray-900/50" : "bg-white"}`}
+      className={`py-24 transition-all duration-300 ${
+        isDarkMode ? "bg-[#0F0F0F]" : "bg-[#FFFFFF]"
+      }`}
     >
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <span
+            className={`text-sm px-4 py-1 rounded-full font-medium ${
+              isDarkMode
+                ? "bg-orange-600/20 text-orange-400"
+                : "bg-orange-500/15 text-orange-600"
+            }`}
+          >
+            What We Offer
+          </span>
 
-        <div className="grid md:grid-cols-3 gap-8">
+          <h2
+            className={`text-4xl md:text-5xl font-extrabold mt-4 ${
+              isDarkMode ? "text-white" : "text-[#111111]"
+            }`}
+          >
+            Our Creative Services
+          </h2>
+
+          <p
+            className={`max-w-2xl mx-auto mt-4 text-lg ${
+              isDarkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            We offer premium design services crafted to make your brand stand out.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
           {services.map((service) => (
             <div
               key={service.title}
-              className={`p-8 rounded-3xl ${
+              className={`group p-8 rounded-2xl border backdrop-blur-md shadow-lg transition-all cursor-pointer hover:-translate-y-2 ${
                 isDarkMode
-                  ? "bg-gray-800 text-gray-200"
-                  : "bg-white text-gray-800"
-              } transform transition-all shadow-2xl duration-300 hover:shadow-2xl hover:shadow-red-500/40 hover:scale-105 cursor-pointer flex flex-col items-center text-center`}
+                  ? "bg-white/5 border-white/10 hover:bg-white/10"
+                  : "bg-black/5 border-black/10 hover:bg-black/10"
+              }`}
             >
-              {/* Icon with circular gradient background */}
+              {/* Icon */}
               {service.icon && (
-                <div className="h-20 mb-3 flex justify-center items-center">
-                  <Image
-                    src={service.icon}
-                    alt={service.title}
-                    width={80} // Optional: set width
-                    height={80} // Optional: set height
-                    className="object-contain"
-                  />
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-orange-500/10">
+                    <Image
+                      src={service.icon}
+                      alt={service.title}
+                      width={55}
+                      height={55}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               )}
 
               {/* Title */}
-              <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
+              <h3
+                className={`text-xl font-semibold text-center mb-3 ${
+                  isDarkMode ? "text-white" : "text-[#111111]"
+                }`}
+              >
+                {service.title}
+              </h3>
 
               {/* Description */}
-              <p className="text-gray-400">{service.description}</p>
+              <p
+                className={`text-center text-sm ${
+                  isDarkMode ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
+                {service.description}
+              </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

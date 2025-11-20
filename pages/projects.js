@@ -47,6 +47,7 @@ export default function Projects() {
     "/photos/pic_38.jpg",
     "/photos/pic_39.jpg",
     "/photos/pic_40.jpg",
+    "/photos/pic_41.jpg",
   ];
 
   return (

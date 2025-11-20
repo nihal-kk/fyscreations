@@ -2,164 +2,166 @@
 import React, { useState } from "react";
 
 export default function Contact({ isDarkMode }) {
-  const [formData, setFormData] = useState({
+  const [data, setData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
 
-  const handleChange = (e) => {
+  const update = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setData((p) => ({ ...p, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const whatsapp = (e) => {
     e.preventDefault();
-    alert("Thank you! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
-  const handleWhatsApp = (e) => {
-    e.preventDefault();
-    const { name, email, subject, message } = formData;
-    const phone = "918089241011"; // Your WhatsApp number
-    const text = `Name: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`;
-    const url = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
-    window.open(url, "_blank");
+    const text = `Name: ${data.name}%0AEmail: ${data.email}%0ASubject: ${data.subject}%0AMessage: ${data.message}`;
+    window.open(`https://wa.me/918606043137?text=${text}`, "_blank");
   };
 
   return (
     <section
-      className={`min-h-screen flex items-center justify-center px-6 py-12 transition-colors duration-300 ${
-        isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
+      className={`min-h-screen px-6 py-20 transition-all duration-300 ${
+        isDarkMode ? "bg-[#0D0D0D] text-[#EDEDED]" : "bg-[#FAF7EF] text-[#222]"
       }`}
     >
       <div
-        className={`max-w-5xl w-full rounded-xl shadow-xl overflow-hidden flex flex-col md:flex-row transition-colors duration-300 ${
-          isDarkMode ? "bg-gray-800" : "bg-white"
+        className={`max-w-6xl mx-auto rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-all ${
+          isDarkMode ? "bg-[#1A1A1A]" : "bg-white"
         }`}
       >
-        {/* Contact Info */}
+
+        {/* LEFT PANEL */}
         <div
-          className={`md:w-2/5 p-8 flex flex-col justify-between transition-colors duration-300 ${
+          className={`md:w-2/5 p-10 transition-all ${
             isDarkMode
-              ? "bg-gradient-to-br from-gray-900 to-gray-700 text-white"
-              : "bg-gradient-to-br from-gray-800 to-orange-400 text-white"
-          }`}
+              ? "bg-gradient-to-br from-[#1A1A1A] to-black"
+              : "bg-gradient-to-br from-[#B8860B] to-[#3B2F1A]"
+          } text-white`}
         >
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
-            <p className="mb-6">
-              Have questions? Reach out and we'll respond as soon as possible.
-            </p>
+          <h2 className="text-3xl font-bold">Get In Touch</h2>
+          <p className="opacity-80 mt-2 mb-6">
+            Contact the FYS Creations team any time.
+          </p>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="bg-orange-500 p-3 rounded-lg"><img className="h-7" src="icons/phone-svgrepo-com.svg" alt="" /></div>
-                <div className="text-left">
-                  <h3 className="font-semibold">Phone</h3>
-                  <p>+91 9847471231</p>
-                </div>
+          <div className="space-y-6">
+
+            {/* Phone */}
+            <div className="flex gap-4 items-center">
+              <div
+                className={`p-3 rounded-lg ${
+                  isDarkMode ? "bg-[#D4AF37]/20" : "bg-[#FAF7EF]/20"
+                }`}
+              >
+                <img src="/icons/phone-svgrepo-com.svg" className="h-6" />
               </div>
-
-              <div className="flex items-center gap-4">
-                <div className="bg-orange-500 p-3 rounded-lg"><img className="h-7" src="icons/email-svgrepo-com.svg" alt="" /></div>
-                <div className="text-left">
-                  <h3 className="font-semibold">Email</h3>
-                  <p>rameesmrm24@gmail.com</p>
-                </div>
+              <div>
+                <h3 className="font-semibold">Phone</h3>
+                <p className="opacity-80">+91 8606043137</p>
               </div>
+            </div>
 
-              <div className="flex items-center gap-4">
-                <div className="bg-orange-500 p-3 rounded-lg text-center"><img className="h-7" src="icons/location-svgrepo-com.svg" alt="" /></div>
-                <div className="text-left">
-                  <h3 className="font-semibold">Location</h3>
-                  <p>karanthur, kozhikode, kerala</p>
-                </div>
+            {/* Email */}
+            <div className="flex gap-4 items-center">
+              <div
+                className={`p-3 rounded-lg ${
+                  isDarkMode ? "bg-[#D4AF37]/20" : "bg-[#FAF7EF]/20"
+                }`}
+              >
+                <img src="/icons/email-svgrepo-com.svg" className="h-6" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Email</h3>
+                <p className="opacity-80">fyscreations123@gmail.com</p>
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="flex gap-4 items-center">
+              <div
+                className={`p-3 rounded-lg ${
+                  isDarkMode ? "bg-[#D4AF37]/20" : "bg-[#FAF7EF]/20"
+                }`}
+              >
+                <img src="/icons/location-svgrepo-com.svg" className="h-6" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Location</h3>
+                <p className="opacity-80">Kozhikode, Kerala ,India</p>
               </div>
             </div>
           </div>
+
+          {/* Socials */}
+          <div className="flex gap-6 mt-10">
+            <a  href="https://wa.me/918606043137" target="_blank" id="wb" rel="noopener noreferrer"><img className="h-9 hover:scale-110 transition" src="/icons/whatsapp-svgrepo-com.svg" alt="WhatsApp"/></a>
+            <a  href="https://www.instagram.com/fyscreations?utm_source=qr&igsh=MTA2M3k5bW16NXRtNg==" target="_blank" rel="noopener noreferrer"><img className="h-9 hover:scale-110 transition" src="/icons/instagram-1-svgrepo-com.svg" alt="WhatsApp"/></a>
+            <a  href="https://whatsapp.com/channel/0029VaxHGuL6BIEnCGYkl22S" target="_blank" rel="noopener noreferrer"><img className="h-9 hover:scale-110 transition" src="/icons/group-svgrepo-com.svg" alt="WhatsApp"/></a>
+          </div>
         </div>
 
-        {/* Contact Form */}
-        <div
-          className={`md:w-3/5 p-8 flex flex-col transition-colors duration-300 ${
-            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-          }`}
-        >
-          <h2 className="text-3xl font-bold mb-2">Send Us a Message</h2>
-          <p className="mb-6">Fill out the form below and we'll get back to you.</p>
+        {/* RIGHT FORM */}
+        <div className="md:w-3/5 p-10">
+          <h2 className="text-3xl font-bold">Send Us a Message</h2>
+          <p className="opacity-70 mb-6">We reply within minutes.</p>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
-                type="text"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
                 placeholder="Your Name"
-                required
-                className={`w-full p-3 border rounded-lg transition-colors duration-300 ${
+                onChange={update}
+                className={`p-3 rounded-lg border ${
                   isDarkMode
-                    ? "bg-gray-700 text-white border-gray-600 placeholder-gray-300 focus:ring-blue-500"
-                    : "bg-gray-100 text-black border-gray-300 placeholder-gray-500 focus:ring-blue-500"
+                    ? "bg-[#2B2B2B] text-white border-[#444]"
+                    : "bg-[#F2EDE4] border-[#D6C7A1]"
                 }`}
               />
               <input
-                type="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
                 placeholder="Your Email"
-                required
-                className={`w-full p-3 border rounded-lg transition-colors duration-300 ${
+                onChange={update}
+                className={`p-3 rounded-lg border ${
                   isDarkMode
-                    ? "bg-gray-700 text-white border-gray-600 placeholder-gray-300 focus:ring-blue-500"
-                    : "bg-gray-100 text-black border-gray-300 placeholder-gray-500 focus:ring-blue-500"
+                    ? "bg-[#2B2B2B] text-white border-[#444]"
+                    : "bg-[#F2EDE4] border-[#D6C7A1]"
                 }`}
               />
             </div>
 
             <input
-              type="text"
               name="subject"
-              value={formData.subject}
-              onChange={handleChange}
               placeholder="Subject"
-              required
-              className={`w-full p-3 border rounded-lg transition-colors duration-300 ${
+              onChange={update}
+              className={`w-full p-3 rounded-lg border ${
                 isDarkMode
-                  ? "bg-gray-700 text-white border-gray-600 placeholder-gray-300 focus:ring-blue-500"
-                  : "bg-gray-100 text-black border-gray-300 placeholder-gray-500 focus:ring-blue-500"
+                  ? "bg-[#2B2B2B] text-white border-[#444]"
+                  : "bg-[#F2EDE4] border-[#D6C7A1]"
               }`}
             />
 
             <textarea
               name="message"
-              value={formData.message}
-              onChange={handleChange}
               placeholder="Your Message"
-              required
-              className={`w-full p-3 border rounded-lg transition-colors duration-300 resize-y min-h-[150px] ${
+              onChange={update}
+              className={`w-full p-3 rounded-lg min-h-[150px] border ${
                 isDarkMode
-                  ? "bg-gray-700 text-white border-gray-600 placeholder-gray-300 focus:ring-blue-500"
-                  : "bg-gray-100 text-black border-gray-300 placeholder-gray-500 focus:ring-blue-500"
+                  ? "bg-[#2B2B2B] text-white border-[#444]"
+                  : "bg-[#F2EDE4] border-[#D6C7A1]"
               }`}
             />
 
-            <div className="flex flex-col md:flex-row gap-4 mt-4">
-             
-              <button
-                onClick={handleWhatsApp}
-                className="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition-colors"
-              >
-                Send via WhatsApp
-              </button>
-            </div>
+            <button
+              onClick={whatsapp}
+              className={`w-full py-3 rounded-lg font-semibold mt-4 transition-all ${
+                isDarkMode
+                  ? "bg-[#D4AF37] hover:bg-[#c19d2f] text-black"
+                  : "bg-[#B8860B] hover:bg-[#8F6E05] text-white"
+              }`}
+            >
+              Send via WhatsApp
+            </button>
           </form>
         </div>
       </div>

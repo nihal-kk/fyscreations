@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  images: {
+    domains: ["wallpapers.com","encrypted-tbn0.gstatic.com"],
+  },
 };
 
 export default nextConfig;

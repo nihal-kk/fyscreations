@@ -1,56 +1,84 @@
-"use client"; // Required for React hooks if needed
-
+"use client";
 import Image from "next/image";
+import { CheckCircle } from "lucide-react";
 
 export default function About({ isDarkMode }) {
   return (
     <section
       id="about"
-      className={`py-30 ${isDarkMode ? "bg-gray-800/50" : "bg-white"}`}
+      className={`py-24 ${
+        isDarkMode ? "bg-[#0F0F0F]" : "bg-[#FFFFFF]"
+      } transition-all duration-300`}
     >
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left - Image */}
-          <div className="relative">
-            <div className="w-full max-w-sm aspect-square overflow-hidden rounded-2xl shadow-lg mx-auto">
-              <Image
-                src="/logo.jpg" // ✅ Must be inside public folder
-                alt="About section"
-                width={400}    // Optional: set width
-                height={400}   // Optional: set height
-                className="w-full h-full object-cover"
-              />
-            </div>
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+        {/* Left Image Card */}
+        <div className="relative">
+          <div className="w-full rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]">
+            <Image
+              src="/logo.png" // Replace with your image
+              alt="About FYS Creations"
+              width={600}
+              height={600}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Right Content */}
+        <div>
+          {/* Small Orange Tag */}
+          <div className="inline-block mb-4 bg-orange-500/20 text-orange-400 px-4 py-1 rounded-full text-sm font-medium">
+            About Us
           </div>
 
-          {/* Right - Content */}
-          <div>
-            <h2 className="text-4xl font-bold mb-6">About Me</h2>
-            <p
-              className={`mb-4 leading-relaxed ${
-                isDarkMode ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              Venmanaden is a creative platform dedicated to the art of
-              typography. Here, letters aren’t just letters; they tell stories,
-              evoke emotions, and bring words to life. From custom fonts and
-              sleek text styles to dynamic motion typography, ordinary text
-              transforms into extraordinary visual experiences. Every project is
-              an exploration of creativity, balance, and expression, blending
-              modern design trends with timeless typographic principles.
-            </p>
-            <p
-              className={`mb-6 leading-relaxed ${
-                isDarkMode ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              The platform serves as a source of inspiration for designers,
-              creators, and brands, encouraging experimentation with type,
-              discovering new styles, and making every word visually captivating
-              and unforgettable. Venmanaden is where ideas meet form, and every
-              letter leaves an impression.
-            </p>
+          {/* Heading */}
+          <h2
+            className={`text-4xl md:text-5xl font-extrabold mb-6 leading-tight ${
+              isDarkMode ? "text-white" : "text-[#111111]"
+            }`}
+          >
+            Crafting Designs  
+            <span className="text-orange-500"> That Inspire.</span>   
+          </h2>
+
+          {/* Paragraph */}
+          <p
+            className={`text-lg mb-6 ${
+              isDarkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            FYS Creations is a modern creative agency specializing in
+            professional poster design, branding, video editing, logos, and
+            digital content. We transform ideas into premium visuals designed
+            to elevate your brand.
+          </p>
+
+          {/* Bullet Points */}
+          <div className="space-y-4 mb-8">
+            {[
+              "Premium designs with attention to detail.",
+              "Fast delivery without compromising quality.",
+              "Creative ideas crafted for business growth.",
+              "Affordable pricing for all types of clients."
+            ].map((item, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-orange-500" />
+                <p
+                  className={`text-base ${
+                    isDarkMode ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  {item}
+                </p>
+              </div>
+            ))}
           </div>
+
+          {/* CTA Button */}
+          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg transition-all duration-300">
+            Learn More
+          </button>
         </div>
       </div>
     </section>
