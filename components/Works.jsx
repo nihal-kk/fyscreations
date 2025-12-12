@@ -37,6 +37,18 @@ export default function Works({ isDarkMode }) {
 
   ];
 
+  // ------------------------ youtube VIDEOS ------------------------
+
+   const youtubeFiles = [
+    "https://www.youtube.com/embed/76j6nb0HNs8",
+    "https://www.youtube.com/embed/zLeyprw2vs0",
+    "https://www.youtube.com/embed/6RzO9t0PFEs",
+    "https://www.youtube.com/embed/uwl2qfwaqtg",
+    "https://www.youtube.com/embed/OrJmbWX0Jnk",
+    "https://www.youtube.com/embed/vsds5xjRJ3E",
+ 
+  ];
+
   return (
     <section
       id="works"
@@ -120,7 +132,7 @@ export default function Works({ isDarkMode }) {
     Videos
   </h2>
 
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 ">
     {videoFiles.map((src, index) => (
       <div
         key={index}
@@ -161,10 +173,42 @@ export default function Works({ isDarkMode }) {
       </div>
     ))}
   </div>
+  </div>
+  
+     <div className="mt-10">
+          <h2
+            className={`text-3xl md:text-4xl font-extrabold mb-6 ${
+              isDarkMode ? "text-white" : "text-[#111111]"
+            }`}
+          >
+            Lip Set (Lip-Sync) Videos
+          </h2>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {youtubeFiles.map((src, index) => (
+              <div
+                key={index}
+                className={`rounded-xl overflow-hidden shadow-lg transition-all hover:-translate-y-2 ${
+                  isDarkMode
+                    ? "bg-black/5 border border-black/10"
+                    : "bg-white/10 border border-white/10"
+                }`}
+              >
+                <iframe
+                  src={src}
+                  className="w-full h-60"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
 </div>
 
 
-      </div>
+
     </section>
   );
 }

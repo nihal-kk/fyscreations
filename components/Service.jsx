@@ -34,7 +34,7 @@ const services = [
     icon: "/icons/digital.png",
   },
   {
-    title: "Video Editing",
+    title: "Songs Lipset (Lip-Sync) and Video Editing",
     description:
       "Professional video editing for ads, reels, promos, intros, and brand storytelling.",
     icon: "/icons/video.png",
